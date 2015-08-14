@@ -1,4 +1,3 @@
-
 var bio = {
 	"name": "Marina Stewart",
 	"role": "Web Developer",
@@ -264,4 +263,5 @@ $("#main").append(internationalizeButton);
 
 // add a map to where I've lived and worked
 $("#map-div").append(googleMap);
+
 

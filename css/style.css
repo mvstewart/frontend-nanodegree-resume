@@ -176,6 +176,18 @@ span {
   }
 }
 
+#map {
+  display: block;
+  height: 100%;
+  margin: 0 5%;
+}
+
+#map-div {
+  height: 400px;
+  width: 100%;
+  padding-bottom: 5%;
+}
+
 @media only screen and (max-width:900px) {
   .biopic {
     width: 175px;

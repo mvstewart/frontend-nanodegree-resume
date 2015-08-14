@@ -85,8 +85,11 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+  var x = loc.pageX;
+  var y = loc.pageY;
+  logClicks(x,y);
 });
+
 
 
 
@@ -160,17 +163,87 @@ function initializeMap() {
       title: name
     });
 
+    var contentString = '<div id="iw-container">'+
+      '<h1 class="iw-title">Places where I\'ve lived and worked</h1>'+
+      '<p>'+ name + '</p>'+
+      '</div>'+
+      '</div>';
+
+
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      content: contentString
     });
 
-    // hmmmm, I wonder what this is about...
+    // open an infoWindow when you click on a pin
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      infoWindow.open(map,marker);
     });
+
+      /*
+     * The google.maps.event.addListener() event waits for
+     * the creation of the infowindow HTML structure 'domready'
+     * and before the opening of the infowindow defined styles
+     * are applied.
+     */
+    google.maps.event.addListener(infoWindow, 'domready', function() {
+
+      // Reference to the DIV which receives the contents of the infowindow using jQuery
+      var iwOuter = $('.gm-style-iw');
+
+      /* The DIV we want to change is above the .gm-style-iw DIV.
+      * So, we use jQuery and create a iwBackground variable,
+      * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+      */
+      var iwBackground = iwOuter.prev();
+
+      // Remove the background shadow DIV
+      iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+      // Remove the white background DIV
+      iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+      // Moves the infowindow 110px to the right.
+      iwOuter.parent().parent().css({left: '110px'});
+
+      // Moves the shadow of the arrow 76px to the left margin 
+      iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+      // Moves the arrow 76px to the left margin 
+      iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+      // Changes the desired color for the tail outline.
+      // The outline of the tail is composed of two descendants of div which contains the tail.
+      // The .find('div').children() method refers to all the div which are direct descendants of the previous div. 
+      iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+      // Taking advantage of the already established reference to
+      // div .gm-style-iw with iwOuter variable.
+      // You must set a new variable iwCloseBtn.
+      // Using the .next() method of JQuery you reference the following div to .gm-style-iw.
+      // Is this div that groups the close button elements.
+      var iwCloseBtn = iwOuter.next();
+
+      // Apply the desired effect to the close button
+      iwCloseBtn.css({
+        opacity: '1', // by default the close button has an opacity of 0.7
+        right: '38px', top: '3px', // button repositioning
+        border: '7px solid #48b5e9', // increasing button border and new color
+        'border-radius': '13px', // circular effect
+        'box-shadow': '0 0 5px #3990B9' // 3D effect to highlight the button
+      });
+
+      // The API automatically applies 0.7 opacity to the button after the mouseout event.
+      // This function reverses this event to the desired value.
+      iwCloseBtn.mouseout(function(){
+        $(this).css({opacity: '1'});
+      });
+    });
+
+    
+
 
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
@@ -228,15 +301,16 @@ function initializeMap() {
 }
 
 /*
-Uncomment the code below when you're ready to implement a Google Map!
+ready to implement a Google Map!
 */
 
-// Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+//Calls the initializeMap() function when the page loads
+window.addEventListener('load', initializeMap);
 
-// Vanilla JS way to listen for resizing of the window
+//Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});
+

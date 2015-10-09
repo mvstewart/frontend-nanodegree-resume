@@ -113,19 +113,19 @@ work.display();
 var project = {
 	"projects": [
 	{
-		"title": "mbsp.com",
+		"title": "Project 1",
 		"date": "February 2015 - June 2015",
 		"description": "some text",
 		"image": ["images/197x148.gif"]
 	},
 	{
-		"title": "capitalandworth.com",
+		"title": "Project 2",
 		"date": "July 2014 - November 2014",
 		"description": "another text",
 		"image": ["images/197x148.gif"]
 	},
 	{
-		"title": "gillespiehall.com",
+		"title": "Project 3",
 		"date": "January 2014 - August 2014",
 		"description": "bla-bla",
 		"image": ["images/197x148.gif"]
@@ -168,31 +168,25 @@ var education = {
 		"major": "Journalism",
 		"degree": "Bachelor",
 		"graduationYear": "2010"
-	},
-	{
-		"name": "State University of Printing",
-		"location": "Moscow, Russia",
-		"major": "Economics and Management",
-		"degree": "1 year",
-		"graduationYear": "n/a"
-	}],
+	}
+	],
 	"online_courses": [
 	{
-		"title": "Front-End Nano Degree",
+		"title": "Front-End Nanodegree",
 		"school": "Udacity",
 		"dates": "July 2015 - present",
 		"url": "udacity.com"
 	},
 	{
-		"title": "Python",
+		"title": "An Introduction To Interactive Programming in Python",
 		"school": "Coursera",
 		"dates": "May 2014 - June 2014",
 		"url": "coursera.com", 
 	},
 	{
-		"title": "Ruby on Rails",
+		"title": "Web Application Architectures",
 		"school": "Coursera",
-		"dates": "May 2014 - June 2014",
+		"dates": "May 2014",
 		"url": "coursera.com"
 	}],
 	"display": function() {

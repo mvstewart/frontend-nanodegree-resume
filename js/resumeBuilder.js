@@ -1,10 +1,10 @@
 var bio = {
 	"name": "Marina Stewart",
-	"role": "Web Developer",
+	"role": "Front-End Web Developer",
 	"bioPic": "images/profilepic.jpg",
 	"welcomeMsg": "Hello there! I'm excited that you are visiting my page. Please feel free to contact me with questions and ideas for collaboration. ",
 	"skills": [
-	"HTML", "CSS", "JavaScript", "Python", "PHP"
+	"HTML5", "CSS3", "JavaScript", "Python", "PHP"
 	],
 	"contacts": {
 		"contactGenericType": "Skype",
@@ -53,18 +53,12 @@ var bio = {
 		$("#topContacts").prepend(formattedBlog);
 		$("#topContacts").prepend(formattedGithub);
 		$("#topContacts").prepend(formattedTwitter);
-		$("#topContacts").prepend(formattedEmail);
-		$("#topContacts").prepend(formattedMobile);
-		$("#topContacts").prepend(formattedContactGeneric);
 
 		// Add contacts to the Footer
 		$("#footerContacts").prepend(formattedLocation);
 		$("#footerContacts").prepend(formattedBlog);
 		$("#footerContacts").prepend(formattedGithub);
 		$("#footerContacts").prepend(formattedTwitter);
-		$("#footerContacts").prepend(formattedEmail);
-		$("#footerContacts").prepend(formattedMobile);
-		$("#footerContacts").prepend(formattedContactGeneric);
 		}	
 }
 

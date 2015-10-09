@@ -72,7 +72,7 @@ The resume has four distinct sections: work, education, projects and a header wi
 * Here’s an example of some code that added the location of one my companies to the page:
    * `var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);`
    * `$(".work-entry:last").append(formattedLocation);`
-3. The resume includes an interactive map. To add it, I appended the googleMap string to `<div id=”mapDiv”>`.
+3. The resume includes an interactive map. To add it, I appended the googleMap string to `<div id=”map-div”>`.
 4. All of my code for adding elements to the resume is within functions. And all of my functions are encapsulated within the same objects containing my resume data. For instance, the functions for appending work experience elements to the page should be found within the same object containing data about my work experience.
 5. My resume also `console.log()` information about click locations. On line 90 in helper.js, you’ll find a jQuery onclick handler that I modified to work with the `logClicks(x,y)` function above it.
 6. It’s possible to make additional information show up when you click on the pins in the map. Check out line 174 in helper.js and the Google Maps API to get started.
